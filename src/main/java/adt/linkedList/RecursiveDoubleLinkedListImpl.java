@@ -27,15 +27,28 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 
 	@Override
 	public void removeFirst() {
-		if (super.isEmpty()) throw new IndexOutOfBoundsException("Lista vazia");
-		super.setData(super.getNext().getData());
-		super.setNext(super.getNext().getNext());
+		if (!super.isEmpty()){
+			super.setData(super.getNext().getData());
+			super.setNext(super.getNext().getNext());
+		}
 	}
 
 	@Override
 	public void removeLast() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (super.size() <= 1) {
+			this.removeFirst();
+		}else {
+			Rlast(super.next);
+		}
+	}
+
+	private void Rlast(RecursiveSingleLinkedListImpl<T> next) {
+		if (!next.getNext().isEmpty()) {
+			Rlast(next.getNext());
+		} else {
+			next.setNext(null);
+			next.setData(null);
+		}
 	}
 
 	public RecursiveDoubleLinkedListImpl<T> getPrevious() {
