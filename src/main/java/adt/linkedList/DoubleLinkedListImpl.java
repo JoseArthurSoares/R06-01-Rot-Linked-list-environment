@@ -1,7 +1,5 @@
 package adt.linkedList;
 
-import java.util.NoSuchElementException;
-
 public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 		DoubleLinkedList<T> {
 
