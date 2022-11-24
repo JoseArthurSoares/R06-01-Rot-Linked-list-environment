@@ -1,5 +1,7 @@
 package adt.linkedList;
 
+import java.util.ArrayList;
+
 public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 
 	protected T data;
@@ -57,8 +59,16 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 
 	@Override
 	public T[] toArray() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		ArrayList<T> lista = new ArrayList<T>();
+		to_array(lista, this);
+		return (T[]) lista.toArray();
+	}
+
+	private void to_array(ArrayList<T> lista, RecursiveSingleLinkedListImpl<T> node) {
+		if (!node.isEmpty()){
+			lista.add(node.data);
+			to_array(lista, node.next);
+		}
 	}
 
 	public T getData() {
