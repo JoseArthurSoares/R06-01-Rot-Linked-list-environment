@@ -11,8 +11,18 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 
 	@Override
 	public void insertFirst(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (!(element == null)){
+			if (isEmpty()){
+				super.insert(element);
+			} else {
+				RecursiveDoubleLinkedListImpl newElement = new RecursiveDoubleLinkedListImpl();
+				newElement.setData(super.data);
+				newElement.setNext(super.next);
+				super.setData(element);
+				super.setNext(newElement);
+			}
+			this.previous = new RecursiveDoubleLinkedListImpl<>();
+		}
 	}
 
 	@Override
