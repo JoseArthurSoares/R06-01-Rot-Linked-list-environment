@@ -27,8 +27,9 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 
 	@Override
 	public void removeFirst() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		if (super.isEmpty()) throw new IndexOutOfBoundsException("Lista vazia");
+		super.setData(super.getNext().getData());
+		super.setNext(super.getNext().getNext());
 	}
 
 	@Override
