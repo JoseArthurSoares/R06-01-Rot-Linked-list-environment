@@ -3,6 +3,7 @@ package adt.stack;
 import adt.linkedList.DoubleLinkedList;
 import adt.linkedList.DoubleLinkedListImpl;
 
+
 public class StackDoubleLinkedListImpl<T> implements Stack<T> {
 
 	protected DoubleLinkedList<T> top;
@@ -15,33 +16,37 @@ public class StackDoubleLinkedListImpl<T> implements Stack<T> {
 
 	@Override
 	public void push(T element) throws StackOverflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
-
+		if (isFull()) throw new StackOverflowException();
+		if (!(element == null)){
+			this.top.insert(element);
+		}
 	}
 
 	@Override
 	public T pop() throws StackUnderflowException {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+		if (isEmpty()) throw new StackUnderflowException();
+		T pop = this.top();
+		this.top.removeLast();
+		return pop;
 	}
 
 	@Override
 	public T top() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+		if (isEmpty()) return null;
+		T[] array = this.top.toArray();
+		return array[array.length - 1];
 	}
 
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+		return this.top.size() == 0;
 	}
 
 	@Override
 	public boolean isFull() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented!");
+		System.out.println("top size: " + this.top.size());
+		System.out.println("size: " + this.size);
+		return this.top.size() == this.size;
 	}
 
 }
